@@ -343,32 +343,12 @@ body {
   }
 }
 [class*=__link] {
-  position: relative;
   display: inline-block;
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.2px;
   text-transform: capitalize;
   color: #f5f5f5;
-  transition: color 0.1s linear;
-}
-[class*=__link]::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1.4px;
-  bottom: -2px;
-  left: 0;
-  background: #f5f5f5;
-  transform: scale(0);
-  visibility: hidden;
-  transition: all 0.1s linear;
-}
-@media (min-width: 991.98px) {
-  [class*=__link]:hover::before {
-    visibility: visible;
-    transform: scale(1);
-  }
 }
 
 /*==================== REPEAT BLOCK ====================*/
@@ -454,8 +434,70 @@ body {
     align-items: center;
   }
 }
+.header__list-item {
+  position: relative;
+}
+.header__link {
+  position: relative;
+  padding: 0 25px 0 0;
+  transition: all 0.2s linear;
+}
 .header__link.active {
   font-size: 20px;
+}
+.header__link::before, .header__link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 10px;
+  height: 2px;
+  background: #f5f5f5;
+  transition: all 0.2s linear;
+}
+.header__link::before {
+  transform: rotate(-40deg);
+  right: 0;
+}
+.header__link::after {
+  transform: rotate(40deg);
+  right: 7px;
+}
+.header__link._active {
+  text-shadow: 0 0 10px #fff;
+}
+.header__link._active::before {
+  transform: rotate(40deg);
+  right: 0;
+  background: #333;
+}
+.header__link._active::after {
+  transform: rotate(-40deg);
+  right: 7px;
+  background: #333;
+}
+.header__sub-list {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  width: 180px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 15px;
+  z-index: 10;
+}
+.header__sub-list li:not(:last-child) {
+  margin: 0 0 20px 0;
+}
+.header__sub-list.active {
+  background: #333;
+}
+.header__sub-link {
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: #f5f5f5;
 }
 .header__button.active .wave-btn__waves::before {
   background: #755d9a;
@@ -526,13 +568,28 @@ body {
   overflow: hidden;
   padding: 15px;
 }
+@media (max-width: 768px) {
+  .intro__row {
+    flex-wrap: wrap;
+  }
+}
 .intro__column {
   flex: 0 1 50%;
+}
+@media (max-width: 768px) {
+  .intro__column {
+    flex: 0 1 100%;
+  }
 }
 .intro__image {
   padding: 0 0 50% 0;
   border-radius: 5px;
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  .intro__image {
+    padding: 0 0 70% 0;
+  }
 }
 
 .menu__checkbox {

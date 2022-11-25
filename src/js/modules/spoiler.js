@@ -1,9 +1,9 @@
 $(document).ready(function () {
-  $('.block__title').click(function (event) {
-    if ($('.block').hasClass('one')) {
-      $('.block__title').not($(this)).removeClass('active');
-      $('.block__text').not($(this).next()).slideUp(300);
+  $('.header__link').click(function (event) {
+    if ($('.header__list').hasClass('one')) {
+      $('.header__link').not($(this)).removeClass('_active');
+      $('.header__sub-list').not($(this).next()).slideUp(300);
     }
-    $(this).toggleClass('active').next().slideToggle(300);
+    $(this).toggleClass('_active').next().slideToggle(300);
   });
 });
